@@ -1,0 +1,33 @@
+{
+    "theme_color": "#1a9988",
+    "background_color": "#ffffff",
+    "icons": [
+        {
+            "purpose": "any",
+            "src": "../pwa/android-chrome-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "purpose": "any",
+            "src": "../pwa/android-chrome-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ],
+    "orientation": "any",
+    "display": "standalone",
+    "dir": "auto",
+    "lang": "en-US",
+    "name": "CookieTrack",
+    "short_name": "CookieTrack",
+    "scope": "https://cookie-track.web.app/",
+    "start_url": "https://cookie-track.web.app/login/sign-in.html",
+    "description": "A web app used to track, manage, and stay up to date with the latest orders, rewards, and inventory of Girl Scout cookie troops.",
+    "id": "https://cookie-track.web.app/",
+    "display_override": [
+        "window-controls-overlay",
+        "standalone",
+        "browser"
+    ]
+}

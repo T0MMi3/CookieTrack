@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>CookieTrack | Account</title>
+    <link rel="stylesheet" href="../main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lilita+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="../resources/pwa/apple-touch-icon.png?v=2">
+    <link rel="icon" type="image/png" sizes="32x32" href="../resources/pwa/favicon-32x32.png?v=2">
+    <link rel="icon" type="image/png" sizes="16x16" href="../resources/pwa/favicon-16x16.png?v=2">
+    <link rel="manifest" href="../resources/pwa/site.webmanifest">
+
+    <script src="../utils/darkMode.js"></script>
+    <script type="module" src="../utils/auth.js"></script>
+</head>
+
+<body class="bg-main-bg bg-repeat bg-white dark:bg-black">
+    <div class="relative h-full min-h-screen font-sans bg-white-overlay dark:bg-black-overlay">
+        <div class="flex items-start">
+            <section class="main-content w-full p-6 overflow-auto ">
+                <div class="flex items-center flex-wrap gap-6 max-lg:ml-3">
+                    <div>
+                        <h3 class="text-lg font-semibold text-green">
+                            Your Account
+                        </h3>
+                        <p class="text-xs text-black dark:text-white">
+                            View your settings and account information.
+                        </p>
+                    </div>
+                </div>
+                <div class="mt-12 mb-6 px-2">
+                    <div
+                        class="bg-white dark:bg-black max-w-[120rem] shadow-default mx-auto rounded-default overflow-hidden mb-8">
+                        <div class="bg-green h-32 w-full">
+                            <div class="relative top-[45px] m-auto h-40 w-40 rounded-full shadow-default">
+                                <img id="user-photo" src="../resources/images/avatar.png"
+                                    class="w-full h-full rounded-full object-cover border-2 border-white bg-white"
+                                    alt="Profile Picture" />
+                            </div>
+                        </div>
+
+                        <div class="max-w-[80%] m-auto space-y-6 mt-24 mb-12">
+                            <h3 class="text-3xl text-green">Your information</h3>
+                            <div>
+                                <label class="text-black dark:text-white text-base mb-2 block">First Name</label>
+                                <div class="relative flex items-center">
+                                    <input id="user-fname" name="fname" type="text" required
+                                        class="bg-white dark:bg-black border border-gray w-full text-base text-black dark:text-white pl-4 pr-10 py-2.5 rounded-default accent-green"
+                                        placeholder="Enter your first name" />
+                                    <i class="fa-solid fa-user w-[18px] h-[18px] absolute right-4 dark:text-white"></i>
+                                </div>
+                            </div>
+                            <div>
+                                <label class="text-black dark:text-white text-base mb-2 block">Last Name</label>
+                                <div class="relative flex items-center">
+                                    <input id="user-lname" name="lname" type="text" required
+                                        class="bg-white dark:bg-black border border-gray w-full text-base text-black dark:text-white pl-4 pr-10 py-2.5 rounded-default accent-green"
+                                        placeholder="Enter your last name" />
+                                    <i class="fa-solid fa-user w-[18px] h-[18px] absolute right-4 dark:text-white"></i>
+                                </div>
+                            </div>
+                            <div>
+                                <label class="text-black dark:text-white text-base mb-2 block">Email Address</label>
+                                <div class="relative flex items-center">
+                                    <input id="user-email" name="email" type="email" required
+                                        class="bg-white dark:bg-black border border-gray w-full text-base text-black dark:text-white pl-4 pr-10 py-2.5 rounded-default accent-green"
+                                        placeholder="Enter your email address" />
+                                    <i
+                                        class="fa-solid fa-envelope w-[18px] h-[18px] absolute right-4 dark:text-white"></i>
+                                </div>
+                            </div>
+                            <div>
+                                <label class="text-black dark:text-white text-base mb-2 block">Phone Number</label>
+                                <div class="relative flex items-center">
+                                    <input id="user-phone" name="phone" type="tel" required
+                                        class="bg-white dark:bg-black border border-gray w-full text-base text-black dark:text-white pl-4 pr-10 py-2.5 rounded-default accent-green"
+                                        placeholder="Enter your phone number" />
+                                    <i class="fa-solid fa-phone w-[18px] h-[18px] absolute right-4 dark:text-white"></i>
+                                </div>
+                            </div>
+                            <div>
+                                <label class="text-base text-black dark:text-white mb-2 block">Upload New Profile
+                                    Picture</label>
+                                <input id="user-upload-photo" type="file" accept=".png,.jpeg,.jpg,.webp"
+                                    class="bg-white dark:bg-black border border-gray w-full text-base text-black dark:text-white cursor-pointer file:border-0 file:py-3 file:px-4 file:mr-4 file:bg-gray file:hover:bg-off-white file:text-black file:font-sans rounded accent-green" />
+                                <p class="text-xs text-orange mt-2">Only PNG, JPG, and WEBP are Allowed.</p>
+                            </div>
+                            <div class="!mt-8">
+                                <button type="button" id="save-changes"
+                                    class="w-full py-2.5 px-4 text-lg tracking-wider shadow-default rounded-default bg-green hover:bg-green-light text-white accent-orange">
+                                    <i class="fa-solid fa-check-double mr-1"></i>
+                                    Save Changes
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-12 mb-6 px-2">
+                    <div
+                        class="bg-white dark:bg-black py-6 px-4 max-w-[120rem] relative shadow-default mx-auto rounded-default">
+                        <h2 class="text-green text-4xl max-sm:text-2xl font-extrabold mb-8">
+                            <i class="fa-solid fa-gear"></i> Settings
+                        </h2>
+
+                        <div class="grid sm:grid-cols-2 gap-4 px-2">
+                            <div class="flex items-center">
+                                <p class="mr-4 text-lg text-black dark:text-white">Dark Mode</p>
+                                <label class="relative cursor-pointer">
+                                    <input id="dark-mode" type="checkbox" class="sr-only peer" />
+                                    <div
+                                        class="w-[53px] h-7 flex items-center bg-red border border-gray rounded-full text-xs text-black font-extrabold after:flex after:items-center after:justify-center peer after:content-['Off'] peer-checked:after:content-['On'] peer-checked:after:translate-x-full after:absolute after:left-[2px] peer-checked:after:border-gray after:bg-white after:border after:border-gray after:rounded-full after:h-6 after:w-6 after:transition-all peer-checked:bg-green">
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <script src="../utils/sidebarNav.js"></script>
+    <script type="module" src="./account.js"></script>
+</body>
+
+</html>

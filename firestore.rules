@@ -1,0 +1,85 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+  	// This rule allows anyone with your Firestore database reference to view, edit,
+    // and delete all data in your Firestore database. It is useful for getting
+    // started, but it is configured to expire after 30 days because it
+    // leaves your app open to attackers. At that time, all client
+    // requests to your Firestore database will be denied.
+    //
+    // Make sure to write security rules for your app before that time, or else
+    // all client requests to your Firestore database will be denied until you Update
+    // your rules
+    
+    
+    //match /{document=**} {
+      // Temporary rule to allow read/write for testing (expires in 2025)
+      //allow read, write: if request.time < timestamp.date(2025, 6, 1);
+    //}
+    
+    
+    // Rules for troop documents
+    match /troopers/{trooperId} {
+      // Allow creation only if the user is authenticated and email is verified
+      //allow create: if request.auth != null && request.auth.token.email_verified == true;
+
+      // Allow read access to any logged-in user
+      allow read: if request.auth != null;
+
+      // Allow update and delete for users with 'manager' or 'leader' roles
+      allow update, delete: if request.auth != null && request.auth.token.role in ['manager', 'leader'];
+    }
+
+
+    // Rules for user documents
+    match /users/{userId} {
+      // Allow read/write only for the authenticated user matching their userId
+      allow read, write: if request.auth != null && request.auth.uid == userId;
+
+      // Allow creation for any logged-in user
+      allow create: if request.auth != null;
+    }
+  
+    
+
+
+    
+    
+    
+    
+    
+    
+    // Only the owner of an order can access it.
+    match /orders/{orderId} {
+      allow read, write: if request.auth != null && request.auth.uid == resource.data.userId;
+    }
+
+
+
+
+    // Match all cookie documents
+    match /cookies/{cookieId} {
+      // Allow create, update, and delete only for managers and leaders
+      allow create, update, delete: if request.auth != null && 
+                                     request.auth.token.role in ['manager', 'leader'];
+
+      // Allow read access to anyone
+      allow read: if true;
+    }
+    
+    
+    
+    //only manager can create cookies
+    match /cookies/{cookieId} {
+      allow create: if request.auth != null && request.auth.token.role == 'manager';
+    }
+    
+    
+    
+    //only manager can create reward
+    match /rewards/{rewardId} {
+      allow create: if request.auth != null && request.auth.token.role == 'manager';
+    }
+  }
+}
+

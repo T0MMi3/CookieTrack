@@ -1,0 +1,150 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*#region GENERAL CSS*/
+a>i,
+nav div>i,
+nav button>i {
+    width: 30px;
+}
+
+h2>i {
+    margin-right: 10px;
+}
+
+@layer base {
+
+    input[type="number"]::-webkit-inner-spin-button,
+    input[type="number"]::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    input[type="number"] {
+        appearance: textfield;
+    }
+}
+
+/*#endregion GENERAL CSS*/
+
+/*#region NOTIFICATION TOAST*/
+#toast-holder {
+    display: flex;
+    flex-direction: column;
+    height: 50%;
+    gap: 10px;
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 999999;
+    margin-top: 10px;
+    pointer-events: none;
+}
+
+.toast {
+    margin: 0 10px;
+    border-radius: 10px;
+    background: #ffffff;
+    padding: 20px 35px 20px 25px;
+    box-shadow: 0 3px 6px #00000029, 0 3px 6px #0000003b;
+    overflow: hidden;
+    transform: translateX(calc(100% + 30px));
+    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.35);
+    z-index: 99999;
+    pointer-events: all;
+}
+
+.toast:hover .toast-progress.active:before {
+    animation-play-state: paused;
+}
+
+.toast.active {
+    transform: translateX(0%);
+}
+
+.toast .toast-content {
+    display: flex;
+    align-items: center;
+}
+
+.toast-content .bell {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 35px;
+    min-width: 35px;
+    background-color: var(--toast-status);
+    color: #ffffff;
+    font-size: 20px;
+    border-radius: 50%;
+    padding-right: 0;
+}
+
+.toast-content .toast-message {
+    display: flex;
+    flex-direction: column;
+    margin: 0 20px;
+}
+
+.toast-message span {
+    font-size: 16px;
+    color: #343434;
+    overflow: auto;
+    overflow-wrap: break-word;
+    max-width: 500px;
+}
+
+.toast-message span.toast-title {
+    color: var(--toast-status);
+}
+
+.toast .close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    padding: 5px;
+    cursor: pointer;
+    opacity: 0.7;
+    color: #343434;
+}
+
+.toast .close:hover {
+    opacity: 1;
+}
+
+.toast .toast-progress {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 5px;
+    width: 100%;
+}
+
+.toast .toast-progress:before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+}
+
+.toast-progress.active:before {
+    animation: toast-progress var(--toast-duration) linear forwards;
+    background-color: var(--toast-status);
+}
+
+@keyframes toast-progress {
+    100% {
+        right: 100%;
+    }
+}
+
+@media (max-width: 767px) {
+    #toast-holder {
+        left: 0;
+    }
+}
+
+/*#endregion NOTIFICATION TOAST*/
